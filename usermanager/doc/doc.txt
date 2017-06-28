@@ -1,0 +1,9 @@
+1. spring boot静态资源访问路径优先级：
+    META/resources > resources > static > public （位于resources目录下）
+
+2.ebean 学习
+    https://dreamkidd.gitbooks.io/ebean-orm-zh-cn/content/setup/serverconfig.html
+
+    http://ebean-orm.github.io/quickstart
+3. springboot学习
+    http://blog.csdn.net/xiaoyu411502/article/details/47864969
