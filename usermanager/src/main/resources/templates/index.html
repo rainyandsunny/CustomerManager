@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>简易用户管理系统</title>
-    <meta name="description" content="主页">
-    <meta name="keywords" content="index">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="renderer" content="webkit">
+    <meta name="description" content="主页"/>
+    <meta name="keywords" content="index"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="renderer" content="webkit"/>
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="assets/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" th:href="@{/assets/i/favicon.png}"/>
+    <link rel="apple-touch-icon-precomposed" th:href="@{/assets/i/app-icon72x72@2x.png}"/>
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <script src="assets/js/echarts.min.js"></script>
-    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
-    <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
-    <link rel="stylesheet" href="assets/css/app.css">
-    <script src="assets/js/jquery.min.js"></script>
-
+    <script th:src="@{/assets/js/echarts.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.datatables.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}"/>
+    <script th:src="@{/assets/js/jquery.min.js}"></script>
 </head>
 
 <body data-type="widgets">
-    <script src="assets/js/theme.js"></script>
+    <script th:src="@{/assets/js/theme.js}"></script>
     <div class="am-g tpl-g">
         <!-- 头部 -->
         <header>
-            <h2 style="color: white; margin-left: 45%; margin-top: 2%">简易用户管理系统</h2>
+            <h2 style="margin-left: 45%; margin-top: 2%; color: white">简易用户管理系统</h2>
         </header>
 
         <!-- 内容区域 -->
@@ -45,10 +44,23 @@
                                     <div class="am-form-group">
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-success" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 400, height: 225}"><span class="am-icon-plus"></span> 新增</button>
                                                 <button type="button" class="am-btn am-btn-default am-btn-secondary"><span class="am-icon-save"></span> 保存</button>
                                                 <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
                                             </div>
+
+                                            <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+                                                <div class="am-modal-dialog">
+                                                    <div class="am-modal-hd">添加用户
+                                                        <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                                                    </div>
+                                                    <div class="am-modal-bd">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +77,7 @@
                                 </div>
                                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                        <input type="text" class="am-form-field ">
+                                        <input type="text" class="am-form-field "/>
                                         <span class="am-input-group-btn">
             <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
           </span>
@@ -85,12 +97,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="gradeX">
-                                                <td>123456</td>
-                                                <td>李文若</td>
-                                                <td>男</td>
-                                                <td>23</td>
-                                                <td>陕西省西安市莲湖区</td>
+                                           <tr class="gradeX" th:each="customer:${customers}">
+                                                <td th:text="${customer.id}"></td>
+                                                <td th:text="${customer.name}"></td>
+                                                <td th:text="${customer.sex}"></td>
+                                                <td th:text="${customer.age}"></td>
+                                                <td th:text="${customer.address}"></td>
                                                 <td>
                                                     <div class="tpl-table-black-operation">
                                                         <a href="javascript:;">
@@ -101,7 +113,9 @@
                                                         </a>
                                                     </div>
                                                 </td>
+
                                             </tr>
+
 
 
                                         </tbody>
@@ -128,11 +142,13 @@
             </div>
         </div>
     </div>
-    </div>
-    <script src="assets/js/amazeui.min.js"></script>
-    <script src="assets/js/amazeui.datatables.min.js"></script>
-    <script src="assets/js/dataTables.responsive.min.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script th:src="@{/assets/js/amazeui.min.js}"></script>
+    <script th:src="@{/assets/js/amazeui.datatables.min.js}"></script>
+    <script th:src="@{/assets/js/dataTables.responsive.min.js}"></script>
+    <script th:src="@{/assets/js/app.js}"></script>
+
+
+
 
 </body>
 

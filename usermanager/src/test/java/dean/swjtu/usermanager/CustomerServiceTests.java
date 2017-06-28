@@ -30,12 +30,14 @@ public class CustomerServiceTests {
     public void addTest(){
 
         assertNotNull(server);
-        Customer customer = new Customer();
-        customer.setName("杨海鹏");
-        customer.setSex("男");
-        customer.setAge(24);
-        customer.setAddress("陕西省咸阳市");
-        server.save(customer);
+        for(int i = 0; i < 10; i ++){
+            Customer customer = new Customer();
+            customer.setName("杨海鹏" + i);
+            customer.setSex("男");
+            customer.setAge(24);
+            customer.setAddress("陕西省咸阳市");
+            server.save(customer);
+        }
     }
 
     @Test

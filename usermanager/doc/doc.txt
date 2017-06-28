@@ -7,3 +7,13 @@
     http://ebean-orm.github.io/quickstart
 3. springboot学习
     http://blog.csdn.net/xiaoyu411502/article/details/47864969
+
+
+4. 在导入maven工程时，不会自动下载依赖的maven库，邮件单击pom.xml,选择mark as maven project
+
+5. 在连接数据库时提示Establishing SSL connection without server's identity verification is not recommended.
+
+    解决：在ebean.properties中（示例）datasource.db.databaseUrl=jdbc:mysql://127.0.0.1:3306/customer?useSSL=false
+
+
+
